@@ -7,6 +7,10 @@ android {
     namespace 'com.example.androidcourseworkuni'
     compileSdk 33
 
+    buildFeatures {
+        viewBinding = true
+    }
+
     defaultConfig {
         applicationId "com.example.androidcourseworkuni"
         minSdk 24
