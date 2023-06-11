@@ -2,7 +2,6 @@ package com.example.androidcourseworkuni;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,26 +19,23 @@ public class AddPlayersActivity extends AppCompatActivity {
         binding = ActivityAddPlayersBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.startGameBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        binding.startGameBtn.setOnClickListener(view -> {
 
-                final String getPlayerOneName = binding.playerOneName.getText().toString();
-                final String getPlayerTwoName = binding.playerTwoName.getText().toString();
+            final String playerOneName = binding.playerOneName.getText().toString();
+            final String playerTwoName = binding.playerTwoName.getText().toString();
 
-                if (getPlayerOneName.isEmpty() || getPlayerTwoName.isEmpty()) {
-                    Toast.makeText(AddPlayersActivity.this, "Please enter player names", Toast.LENGTH_SHORT).show();
-                } else {
-                    redirectToMainActivity(getPlayerOneName, getPlayerTwoName);
-                }
+            if (playerOneName.isBlank() || playerTwoName.isBlank()) {
+                Toast.makeText(AddPlayersActivity.this, "Please enter player names", Toast.LENGTH_SHORT).show();
+            } else {
+                redirectToMainActivity(playerOneName, playerTwoName);
             }
         });
     }
 
-    private void redirectToMainActivity(String getPlayerOneName, String getPlayerTwoName) {
+    private void redirectToMainActivity(String playerOneName, String playerTwoName) {
         Intent intent = new Intent(AddPlayersActivity.this, MainActivity.class);
-        intent.putExtra("playerOne", getPlayerOneName);
-        intent.putExtra("playerTwo", getPlayerTwoName);
+        intent.putExtra("playerOne", playerOneName);
+        intent.putExtra("playerTwo", playerTwoName);
         startActivity(intent);
     }
 }

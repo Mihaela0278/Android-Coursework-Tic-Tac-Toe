@@ -3,7 +3,6 @@ package com.example.androidcourseworkuni;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -13,7 +12,6 @@ public class WinDialog extends Dialog {
 
     private final String message;
     private final MainActivity mainActivity;
-
 
     public WinDialog(@NonNull Context context, String message, MainActivity mainActivity) {
         super(context);
@@ -33,13 +31,9 @@ public class WinDialog extends Dialog {
 
         messageText.setText(message);
 
-        startAgainBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                mainActivity.restartMatch();
-                dismiss();
-            }
+        startAgainBtn.setOnClickListener(view -> {
+            mainActivity.restartMatch();
+            dismiss();
         });
     }
 }
